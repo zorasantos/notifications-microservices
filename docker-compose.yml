@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres:14-alpine
+    container_name: database_notifications_api
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=notifications
+      - POSTGRES_PASSWORD=notifications
+      - POSTGRES_DB=notifications_api
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
