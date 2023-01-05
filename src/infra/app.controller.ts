@@ -8,8 +8,8 @@ export class AppController {
   constructor(private readonly prisma: PrismaService) {}
 
   @Get()
-  list() {
-    return this.prisma.notification.findMany();
+  async list() {
+    return await this.prisma.notification.findMany();
   }
 
   @Post()
