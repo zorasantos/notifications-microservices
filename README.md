@@ -1,2 +1,3 @@
 - Value Object
 - In memory database
+- Mapper pattern
