@@ -3,7 +3,7 @@ import { ANotificationRepository } from '../repositories/ANotificationsRepositor
 import { NotificationNotFound } from './errors/notificationNotFound';
 
 interface ICancelNotificationRequest {
-  recipientId: string;
+  notificationId: string;
 }
 
 type CancelNotificationResponse = void;
@@ -15,10 +15,10 @@ export class CancelNotification {
   async execute(
     request: ICancelNotificationRequest,
   ): Promise<CancelNotificationResponse> {
-    const { recipientId } = request;
+    const { notificationId } = request;
 
     const notification = await this.notificationRepository.findById(
-      recipientId,
+      notificationId,
     );
 
     if (!notification) {

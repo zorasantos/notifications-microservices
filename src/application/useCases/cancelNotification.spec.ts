@@ -13,7 +13,7 @@ describe('Cancel Notification', () => {
     await notificationRepository.create(notification);
 
     await cancelNotification.execute({
-      recipientId: notification.id,
+      notificationId: notification.id,
     });
 
     expect(notificationRepository.notifications[0].canceledAt).toEqual(
@@ -27,7 +27,7 @@ describe('Cancel Notification', () => {
 
     expect(() => {
       return cancelNotification.execute({
-        recipientId: 'fake-notification-id',
+        notificationId: 'fake-notification-id',
       });
     }).rejects.toThrow(NotificationNotFound);
   });
